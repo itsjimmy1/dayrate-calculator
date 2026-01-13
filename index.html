@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,25 +13,30 @@
             padding: 20px;
             background: #f5f5f5;
         }
+
         .calculator {
             background: white;
             padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
+
         h1 {
             color: #2c3e50;
             margin-bottom: 10px;
         }
+
         .subtitle {
             color: #7f8c8d;
             margin-bottom: 30px;
         }
+
         .model-selector {
             display: flex;
             gap: 20px;
             margin-bottom: 30px;
         }
+
         .model-option {
             flex: 1;
             padding: 20px;
@@ -39,26 +45,32 @@
             cursor: pointer;
             transition: all 0.3s;
         }
+
         .model-option:hover {
             border-color: #3498db;
         }
+
         .model-option.selected {
             border-color: #3498db;
             background: #ebf5fb;
         }
+
         .model-option h3 {
             margin-top: 0;
             color: #2c3e50;
         }
+
         .input-group {
             margin-bottom: 25px;
         }
+
         label {
             display: block;
             font-weight: 600;
             margin-bottom: 8px;
             color: #2c3e50;
         }
+
         input[type="number"] {
             width: 100%;
             padding: 12px;
@@ -67,19 +79,23 @@
             border-radius: 4px;
             box-sizing: border-box;
         }
+
         input[type="number"]:focus {
             outline: none;
             border-color: #3498db;
         }
+
         .on-costs-section {
             background: #f8f9fa;
             padding: 20px;
             border-radius: 8px;
             margin-bottom: 30px;
         }
+
         .on-costs-section h3 {
             margin-top: 0;
         }
+
         .on-cost-row {
             display: flex;
             justify-content: space-between;
@@ -87,6 +103,7 @@
             padding: 8px 0;
             border-bottom: 1px solid #e0e0e0;
         }
+
         .on-cost-row:last-child {
             border-bottom: none;
             font-weight: 600;
@@ -94,16 +111,19 @@
             margin-top: 8px;
             border-top: 2px solid #2c3e50;
         }
+
         .on-cost-row input[type="number"] {
             width: 80px;
             padding: 4px 8px;
             text-align: right;
         }
+
         .results {
             margin-top: 30px;
             padding-top: 30px;
             border-top: 2px solid #e0e0e0;
         }
+
         .result-row {
             display: flex;
             justify-content: space-between;
@@ -112,22 +132,27 @@
             background: #f8f9fa;
             border-radius: 4px;
         }
+
         .result-row.highlight {
             background: #3498db;
             color: white;
             font-weight: 600;
             font-size: 20px;
         }
+
         .result-row.breakdown {
             background: #ecf0f1;
             font-size: 14px;
         }
+
         .result-label {
             font-weight: 500;
         }
+
         .result-value {
             font-weight: 600;
         }
+
         .explanation {
             margin-top: 20px;
             padding: 15px;
@@ -136,6 +161,7 @@
             border-left: 4px solid #ffc107;
             font-size: 14px;
         }
+
         /* Toggle switch styles */
         .toggle-row {
             display: flex;
@@ -143,22 +169,26 @@
             align-items: center;
             padding: 8px 0;
         }
+
         .toggle-left {
             display: flex;
             align-items: center;
             gap: 10px;
         }
+
         .toggle-switch {
             position: relative;
             width: 50px;
             height: 26px;
             flex-shrink: 0;
         }
+
         .toggle-switch input {
             opacity: 0;
             width: 0;
             height: 0;
         }
+
         .toggle-slider {
             position: absolute;
             cursor: pointer;
@@ -170,6 +200,7 @@
             transition: 0.3s;
             border-radius: 26px;
         }
+
         .toggle-slider:before {
             position: absolute;
             content: "";
@@ -181,12 +212,15 @@
             transition: 0.3s;
             border-radius: 50%;
         }
-        .toggle-switch input:checked + .toggle-slider {
+
+        .toggle-switch input:checked+.toggle-slider {
             background-color: #3498db;
         }
-        .toggle-switch input:checked + .toggle-slider:before {
+
+        .toggle-switch input:checked+.toggle-slider:before {
             transform: translateX(24px);
         }
+
         .payroll-tax-section {
             background: #e8f4fd;
             padding: 15px;
@@ -194,27 +228,31 @@
             margin: 15px 0;
             border-left: 3px solid #3498db;
         }
+
         .payroll-tax-section .help-text {
             font-size: 12px;
             color: #5a6c7d;
             margin-top: 10px;
             line-height: 1.5;
         }
+
         .rate-input-group {
             display: flex;
             align-items: center;
             gap: 4px;
         }
+
         .rate-disabled {
             opacity: 0.5;
         }
     </style>
 </head>
+
 <body>
     <div class="calculator">
         <h1>Daily Rate Back-Solver</h1>
         <p class="subtitle">Calculate base rate from your target "all-in" daily cost</p>
-        
+
         <div class="model-selector">
             <div class="model-option selected" id="empOption" onclick="selectModel('emp')">
                 <h3>👔 Employee</h3>
@@ -258,7 +296,7 @@
                 <input type="number" id="sick" value="4.17" step="0.01">
                 <span>%</span>
             </div>
-            
+
             <div class="payroll-tax-section">
                 <div class="toggle-row">
                     <div class="toggle-left">
@@ -269,17 +307,43 @@
                         <span>Payroll Tax (QLD)</span>
                     </div>
                     <div class="rate-input-group">
-                        <input type="number" id="payrollTax" value="4.75" step="0.05" style="width: 80px;" class="rate-disabled" disabled>
+                        <input type="number" id="payrollTax" value="4.75" step="0.05" style="width: 80px;"
+                            class="rate-disabled" disabled>
                         <span>%</span>
                     </div>
                 </div>
                 <div class="help-text">
-                    <strong>When does this apply?</strong> QLD payroll tax applies if your total Australian wages exceed <strong>$1.3 million per year</strong>. 
-                    Most small businesses are exempt. The standard rate is 4.75% (or 4.95% if wages exceed $6.5M). 
+                    <strong>When does this apply?</strong> QLD payroll tax applies if your total Australian wages exceed
+                    <strong>$1.3 million per year</strong>.
+                    Most small businesses are exempt. The standard rate is 4.75% (or 4.95% if wages exceed $6.5M).
                     Regional QLD employers may be eligible for a 1% discount (3.75%).
                 </div>
             </div>
-            
+
+            <div class="payroll-tax-section" style="border-left-color: #9b59b6; background: #f5eef8;">
+                <div class="toggle-row">
+                    <div class="toggle-left">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="lslEnabled">
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <span>Long Service Leave (QLD)</span>
+                    </div>
+                    <div class="rate-input-group">
+                        <input type="number" id="lsl" value="1.81" step="0.01" style="width: 80px;"
+                            class="rate-disabled" disabled>
+                        <span>%</span>
+                    </div>
+                </div>
+                <div class="help-text">
+                    <strong>When to include this?</strong> LSL accrues from day one but is only accessible after
+                    <strong>7-10 years</strong> of continuous service.
+                    Include this when costing long-term employees. QLD entitlement: 8.67 weeks after 10 years (≈1.81%
+                    ongoing cost).
+                    Pro-rata access available after 7 years if employment ends.
+                </div>
+            </div>
+
             <div class="on-cost-row">
                 <span>TOTAL</span>
                 <span id="totalOnCosts">27.35</span>
@@ -311,6 +375,14 @@
             calculate();
         }
 
+        function toggleLSL() {
+            const enabled = document.getElementById('lslEnabled').checked;
+            const input = document.getElementById('lsl');
+            input.disabled = !enabled;
+            input.classList.toggle('rate-disabled', !enabled);
+            calculate();
+        }
+
         function updateTotalOnCosts() {
             const super_ = parseFloat(document.getElementById('super').value) || 0;
             const workcover = parseFloat(document.getElementById('workcover').value) || 0;
@@ -319,23 +391,25 @@
             const sick = parseFloat(document.getElementById('sick').value) || 0;
             const payrollTaxEnabled = document.getElementById('payrollTaxEnabled').checked;
             const payrollTax = payrollTaxEnabled ? (parseFloat(document.getElementById('payrollTax').value) || 0) : 0;
-            
-            const total = super_ + workcover + leave + loading + sick + payrollTax;
+            const lslEnabled = document.getElementById('lslEnabled').checked;
+            const lsl = lslEnabled ? (parseFloat(document.getElementById('lsl').value) || 0) : 0;
+
+            const total = super_ + workcover + leave + loading + sick + payrollTax + lsl;
             document.getElementById('totalOnCosts').textContent = total.toFixed(2);
-            
+
             return total;
         }
 
         function calculate() {
             const targetRate = parseFloat(document.getElementById('targetRate').value);
-            
+
             let baseRate, resultsHTML;
-            
+
             if (currentModel === 'emp') {
                 const totalOnCosts = updateTotalOnCosts();
                 const multiplier = 1 + (totalOnCosts / 100);
                 baseRate = targetRate / multiplier;
-                
+
                 const super_ = baseRate * (parseFloat(document.getElementById('super').value) / 100);
                 const workcover = baseRate * (parseFloat(document.getElementById('workcover').value) / 100);
                 const leave = baseRate * (parseFloat(document.getElementById('leave').value) / 100);
@@ -344,48 +418,56 @@
                 const payrollTaxEnabled = document.getElementById('payrollTaxEnabled').checked;
                 const payrollTaxRate = payrollTaxEnabled ? (parseFloat(document.getElementById('payrollTax').value) || 0) : 0;
                 const payrollTax = baseRate * (payrollTaxRate / 100);
-                const totalCost = baseRate + super_ + workcover + leave + loading + sick + payrollTax;
-                
+                const lslEnabled = document.getElementById('lslEnabled').checked;
+                const lslRate = lslEnabled ? (parseFloat(document.getElementById('lsl').value) || 0) : 0;
+                const lsl = baseRate * (lslRate / 100);
+                const totalCost = baseRate + super_ + workcover + leave + loading + sick + payrollTax + lsl;
+
                 resultsHTML = `
                     <div class="result-row highlight">
                         <span class="result-label">Base Salary/Rate Required</span>
-                        <span class="result-value">$${baseRate.toLocaleString('en-AU', {minimumFractionDigits: 2, maximumFractionDigits: 2})} /day</span>
+                        <span class="result-value">$${baseRate.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} /day</span>
                     </div>
                     
                     <div style="height: 15px;"></div>
                     
                     <div class="result-row breakdown">
                         <span class="result-label">Base Rate</span>
-                        <span class="result-value">$${baseRate.toLocaleString('en-AU', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+                        <span class="result-value">$${baseRate.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                     </div>
                     <div class="result-row breakdown">
                         <span class="result-label">+ Superannuation (${document.getElementById('super').value}%)</span>
-                        <span class="result-value">$${super_.toLocaleString('en-AU', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+                        <span class="result-value">$${super_.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                     </div>
                     <div class="result-row breakdown">
                         <span class="result-label">+ WorkCover (${document.getElementById('workcover').value}%)</span>
-                        <span class="result-value">$${workcover.toLocaleString('en-AU', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+                        <span class="result-value">$${workcover.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                     </div>
                     <div class="result-row breakdown">
                         <span class="result-label">+ Annual Leave (${document.getElementById('leave').value}%)</span>
-                        <span class="result-value">$${leave.toLocaleString('en-AU', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+                        <span class="result-value">$${leave.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                     </div>
                     <div class="result-row breakdown">
                         <span class="result-label">+ Leave Loading (${document.getElementById('loading').value}%)</span>
-                        <span class="result-value">$${loading.toLocaleString('en-AU', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+                        <span class="result-value">$${loading.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                     </div>
                     <div class="result-row breakdown">
                         <span class="result-label">+ Sick Leave (${document.getElementById('sick').value}%)</span>
-                        <span class="result-value">$${sick.toLocaleString('en-AU', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+                        <span class="result-value">$${sick.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                     </div>
                     ${payrollTaxEnabled ? `
                     <div class="result-row breakdown">
                         <span class="result-label">+ Payroll Tax QLD (${payrollTaxRate}%)</span>
-                        <span class="result-value">$${payrollTax.toLocaleString('en-AU', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+                        <span class="result-value">$${payrollTax.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                    </div>` : ''}
+                    ${lslEnabled ? `
+                    <div class="result-row breakdown">
+                        <span class="result-label">+ Long Service Leave (${lslRate}%)</span>
+                        <span class="result-value">$${lsl.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                     </div>` : ''}
                     <div class="result-row highlight">
                         <span class="result-label">= Total Daily Cost</span>
-                        <span class="result-value">$${totalCost.toLocaleString('en-AU', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+                        <span class="result-value">$${totalCost.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                     </div>
                     
                     <div class="explanation">
@@ -399,26 +481,26 @@
                 baseRate = targetRate / 1.1;
                 const gst = baseRate * 0.1;
                 const totalCost = baseRate + gst;
-                
+
                 resultsHTML = `
                     <div class="result-row highlight">
                         <span class="result-label">Their Daily Rate (ex GST)</span>
-                        <span class="result-value">$${baseRate.toLocaleString('en-AU', {minimumFractionDigits: 2, maximumFractionDigits: 2})} /day</span>
+                        <span class="result-value">$${baseRate.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} /day</span>
                     </div>
                     
                     <div style="height: 15px;"></div>
                     
                     <div class="result-row breakdown">
                         <span class="result-label">Base Rate (what they charge)</span>
-                        <span class="result-value">$${baseRate.toLocaleString('en-AU', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+                        <span class="result-value">$${baseRate.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                     </div>
                     <div class="result-row breakdown">
                         <span class="result-label">+ GST (10%)</span>
-                        <span class="result-value">$${gst.toLocaleString('en-AU', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+                        <span class="result-value">$${gst.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                     </div>
                     <div class="result-row highlight">
                         <span class="result-label">= Total You Pay</span>
-                        <span class="result-value">$${totalCost.toLocaleString('en-AU', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+                        <span class="result-value">$${totalCost.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                     </div>
                     
                     <div class="explanation">
@@ -428,7 +510,7 @@
                     </div>
                 `;
             }
-            
+
             document.getElementById('results').innerHTML = resultsHTML;
         }
 
@@ -441,9 +523,12 @@
         document.getElementById('sick').addEventListener('input', calculate);
         document.getElementById('payrollTaxEnabled').addEventListener('change', togglePayrollTax);
         document.getElementById('payrollTax').addEventListener('input', calculate);
+        document.getElementById('lslEnabled').addEventListener('change', toggleLSL);
+        document.getElementById('lsl').addEventListener('input', calculate);
 
         // Initial calculation
         calculate();
     </script>
 </body>
+
 </html>
