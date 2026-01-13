@@ -1,6 +1,10 @@
 # Daily Rate Back-Solver
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-blue)](https://itsjimmy1.github.io/dayrate-calculator/)
+
 A simple web calculator to calculate base rates from target "all-in" daily costs for employees and subcontractors.
+
+**🔗 Live Site: https://itsjimmy1.github.io/dayrate-calculator/**
 
 ## Features
 
@@ -15,8 +19,8 @@ A simple web calculator to calculate base rates from target "all-in" daily costs
 
 ## Usage
 
-Simply open `daily_rate_back_solver.html` in a web browser. No server required - it's a fully self-contained static HTML file.
+Simply open `index.html` in a web browser, or visit the [live site](https://itsjimmy1.github.io/dayrate-calculator/). No server required - it's a fully self-contained static HTML file.
 
 ## Deployment
 
-This app is hosted on Google Cloud Storage as a static website.
+This app is hosted on GitHub Pages.
